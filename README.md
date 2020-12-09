@@ -6,9 +6,11 @@ The OPA plugin implementation can be found at: https://github.com/jmprusi/opa-ht
 
 ## TODO
 
-- [ ] Implement a lua script so Haproxy can authorize against the service
-- [ ] Use a nicer helloworld service.
-
+- [ ] Add HTTP extAuthz support to Haproxy, so it can authorize with the OPA server.
+- [ ] Use a nicer helloworld service with better logging.
+- [ ] Openresty Implementation: If authorization service is down, add the option to deny or allow the request. 
+- [ ] Openresty Implementation: Allow to pass a selected list of headers (user-configurable).
+- [ ] Openresty Implementation: Allow to pass the body of the original request (user-configurable).
 
 ## Getting started
 
