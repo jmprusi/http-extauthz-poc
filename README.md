@@ -6,8 +6,8 @@ The OPA plugin implementation can be found at: https://github.com/jmprusi/opa-ht
 
 ## TODO
 
-- [] Implement a lua script so Haproxy can authorize against the service
-- [] Use a nicer helloworld service.
+- [ ] Implement a lua script so Haproxy can authorize against the service
+- [ ] Use a nicer helloworld service.
 
 
 ## Getting started
