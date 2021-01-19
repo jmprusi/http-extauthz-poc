@@ -10,5 +10,5 @@ allow {
 
 action_allowed {
   http_request.method == "GET"
-  glob.match("/valid/*", [], http_request.path)
+  glob.match("/valid", [], http_request.path)
 }
