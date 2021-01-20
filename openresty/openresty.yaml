@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openresty
+  labels:
+    app: openresty 
+spec:
+  selector:
+    matchLabels:
+      app: openresty 
+  template:
+    metadata:
+      labels:
+        app: openresty 
+    spec:
+      containers:
+        - name: openresty 
+          image: quay.io/jmprusi/openresty:lua-resty-http
+          env:
+            - name: AUTHORIZATION_ENDPOINT
+              value: http://opa:9292
+            - name: BACKEND_SERVICE
+              value: http://httpbin:8080/anything/
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/conf.d/
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: openresty-config
+            items:
+              - key: authz
+                path: authz.conf
+  replicas: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openresty
+  labels:
+    app: openresty 
+spec:
+  selector:
+    app: openresty 
+  ports:
+    - name: http 
+      port: 8080
+      protocol: TCP
