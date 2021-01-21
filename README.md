@@ -28,9 +28,9 @@ This repository consist of:
 │   ├── opa.config          <-------- OpenPolicyAgent config to enable Envoy HTTP ExtAuthz plugin.
 │   └── opa.yaml            <-------- OpenPolicyAgent kubernetes deployment.
 ├── openresty
-│   ├── Dockerfile
-│   ├── example-authz.conf  <-------- TODO. Ignore for now. 
-│   └── openresty.yaml
+│   ├── Dockerfile          <-------- Required Openresty Docker image with Lua-resty-http module installed.
+│   ├── example-authz.conf  <-------- Example Openresty implementation of Envoy HTTP ExtAuthz.
+│   └── openresty.yaml      <-------- Openresty Kubernetes deployment.
 └── scripts
     └── local-setup.sh      <-------- Environment setup scripts (Creates a Kind cluster and deploys components) 
 ```
@@ -51,7 +51,7 @@ This repository consist of:
 ## Test that the authorization works.
 
 ```bash
-curl localhost:8080/valid
+curl -v localhost:8080/valid
 ```
 
 ## Clean the environment
